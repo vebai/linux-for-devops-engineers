@@ -32,7 +32,8 @@ The book contains the explanations, mental models and practical exercises. This 
 
 **Use a disposable Linux VM or sandbox**, not your MacBook's macOS shell for the Linux service-management labs. A recent Ubuntu/Debian or RHEL-family distribution with `systemd`, `sudo` access and functioning package repositories is recommended.
 
-1. Read [setup and prerequisites](docs/SETUP.md) and check which Linux host you're controlling.
+1. **No Linux environment yet?** Follow the [step-by-step VirtualBox, VMware or WSL 2 installation guide](docs/linux-lab-setup/README.md) to create an isolated lab and verify your sudo user.
+2. Read [setup and prerequisites](docs/SETUP.md) and check which Linux host you're controlling.
 2. Obtain the files **inside your Linux VM**:
 
    ```bash
@@ -41,10 +42,10 @@ The book contains the explanations, mental models and practical exercises. This 
    ```
 
    If Git is not installed, obtain the repository as an archive and extract it into your Linux home directory.
-3. Begin [Chapter 1](chapters/chapter-01-operating-context/README.md), establishing your user, host, distribution and `~/devops-lab/` workspace.
-4. Complete the chapters in order, preserving `~/devops-lab/` as the continuous practical workspace.
-5. Use the ready-to-use files only when the chapter calls for them. For example, Chapter 10 provides `scripts/verify-nginx.sh` to copy into `~/devops-lab/scripts/`.
-6. Use [troubleshooting](docs/TROUBLESHOOTING.md) when something differs from the expected state, then follow [cleanup](docs/CLEANUP.md) when finished.
+4. Begin [Chapter 1](chapters/chapter-01-operating-context/README.md), establishing your user, host, distribution and `~/devops-lab/` workspace.
+5. Complete the chapters in order, preserving `~/devops-lab/` as the continuous practical workspace.
+6. Use the ready-to-use files only when the chapter calls for them. For example, Chapter 10 provides `scripts/verify-nginx.sh` to copy into `~/devops-lab/scripts/`.
+7. Use [troubleshooting](docs/TROUBLESHOOTING.md) when something differs from the expected state, then follow [cleanup](docs/CLEANUP.md) when finished.
 
 **Two directories have different purposes:** this cloned repository stores the example files; **`~/devops-lab/` is the workspace you modify** while completing the exercises. Run chapter commands from the Linux VM unless a guide explicitly says otherwise.
 
