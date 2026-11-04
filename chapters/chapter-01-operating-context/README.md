@@ -4,7 +4,7 @@
 
 ## Before you begin
 
-Read [setup and prerequisites](../../docs/SETUP.md). You need a disposable Linux environment with Bash and standard core utilities. Do not use a production system.
+Read [setup and prerequisites](../../docs/SETUP.md). If you need to create a Linux sandbox first, follow the [VirtualBox, VMware or WSL 2 installation guide](../../docs/linux-lab-setup/README.md), including creating a user with sudo access. You need a disposable Linux environment with Bash and standard core utilities. Do not use a production system.
 
 ## Run and observe
 
