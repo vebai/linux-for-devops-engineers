@@ -1,0 +1,16 @@
+.DS_Store
+*.swp
+*.swo
+*.tmp
+*.bak
+__pycache__/
+.venv/
+.env
+.env.*
+*.pem
+*.key
+*.pub
+*.log
+!examples/app.log
+*.tar
+*.tar.gz
