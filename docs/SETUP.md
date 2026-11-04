@@ -8,6 +8,8 @@ MacBook users can run a Linux VM and open its Linux terminal. The book's `system
 
 **Never run the deliberate service failure exercises on a production machine.**
 
+If you do not already have a Linux environment, first follow [Create a Linux lab with VirtualBox, VMware or WSL 2](linux-lab-setup/README.md). It includes user creation, sudo verification and service-manager checks.
+
 ## 1. Identify your distribution and user
 
 Run **in the Linux VM**:
