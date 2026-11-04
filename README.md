@@ -32,7 +32,7 @@ The book contains the explanations, mental models and practical exercises. This 
 
 **Use a disposable Linux VM or sandbox**, not your MacBook's macOS shell for the Linux service-management labs. A recent Ubuntu/Debian or RHEL-family distribution with `systemd`, `sudo` access and functioning package repositories is recommended.
 
-1. **No Linux environment yet?** Follow the [step-by-step VirtualBox, VMware or WSL 2 installation guide](docs/linux-lab-setup/README.md) to create an isolated lab and verify your sudo user.
+1. **No Linux environment yet?** Follow the [step-by-step VirtualBox, VMware or WSL 2 installation guide](docs/linux-lab-setup/README.md) to prepare a safe practice environment and verify your sudo user.
 2. Read [setup and prerequisites](docs/SETUP.md) and check which Linux host you're controlling.
 2. Obtain the files **inside your Linux VM**:
 
