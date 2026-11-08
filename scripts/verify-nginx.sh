@@ -18,7 +18,7 @@ else
     echo "FAIL: nginx service is not active"
     status=1
 fi
-if ss -lnt | grep -Eq ':[[:space:]]*80[[:space:]]'
+if ss -lnt | grep -Eq ':80[[:space:]]'
 then
     echo "PASS: TCP port 80 is listening"
 else

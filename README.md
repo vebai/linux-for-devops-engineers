@@ -34,7 +34,7 @@ The book contains the explanations, mental models and practical exercises. This 
 
 1. **No Linux environment yet?** Follow the [step-by-step VirtualBox, VMware or WSL 2 installation guide](docs/linux-lab-setup/README.md) to prepare a safe practice environment and verify your sudo user.
 2. Read [setup and prerequisites](docs/SETUP.md) and check which Linux host you're controlling.
-2. Obtain the files **inside your Linux VM**:
+3. Obtain the files **inside your Linux VM**:
 
    ```bash
    git clone https://github.com/vebai/linux-for-devops-engineers.git
@@ -77,13 +77,15 @@ linux-for-devops-engineers/
 │   └── app.log               # sample text evidence for Chapter 5
 ├── scripts/
 │   └── verify-nginx.sh       # Chapter 10 application/service verification
-├── tests/                    # non-destructive static and simulated checks
-└── publish-to-github.sh      # optional one-time repository publishing
+├── tests/                    # static, mocked and opt-in Ubuntu VM checks
+└── LICENSE                   # MIT terms for repository code
 ```
 
 The sample `app.log` is **fabricated lab data**, not NGINX or production incident evidence.
 
 ## Verify the repository files
+
+The validation command requires **Bash and Python 3**. Install Python 3 as shown in [setup and prerequisites](docs/SETUP.md).
 
 From the cloned repository directory, run:
 
@@ -92,6 +94,31 @@ bash tests/validate-files.sh
 ```
 
 These checks verify Bash syntax, internal Markdown links and the verification script's behaviour against **mock** commands. They do not install packages, start or stop services, or assert that your Linux VM is correctly configured. For real system verification, use the commands in the appropriate chapter.
+
+## Real Ubuntu VM lab validation
+
+After setting up a **disposable Ubuntu VM** and using Chapter 7 to install and start NGINX,
+run the chapter-aligned live check from the cloned repository root:
+
+```bash
+bash tests/validate-ubuntu-live.sh
+```
+
+This runs real filesystem, permission, archive, text, service, network, HTTP and Bash checks
+with predictable chapter breakpoints. It uses an isolated temporary lab directory, does
+not install packages or stop NGINX, and saves a report under
+`~/devops-lab/validation-reports/`.
+
+An optional Chapter 11 **real service-stop and recovery** exercise is available only in
+an authorised unused disposable VM, with explicit confirmation:
+
+```bash
+bash tests/validate-ubuntu-live.sh --allow-service-stop
+```
+
+Read the [live validation checklist](docs/VALIDATION-CHECKLIST.md): some book exercises
+(such as interactive editing, remote SSH/scp and optional scheduling) still require
+human verification. A green mock/static check is not proof of live service health.
 
 ## Troubleshooting and safe stopping points
 
@@ -104,6 +131,13 @@ Inspect before destructive action; verify afterwards. Don't treat a running serv
 - [Clean up safely](docs/CLEANUP.md)
 
 This repository is designed for **authorised disposable learning environments**. Read commands before execution. Some exercises deliberately change permissions or stop NGINX; do not run those drills on production systems or shared servers.
+
+## Licence
+
+Original companion repository code and example files are supplied under the
+[MIT License](LICENSE), which permits reuse, modification and redistribution subject
+to its attribution requirement. The separately published **book and its manuscript**
+remain copyright © 2026 Victor Ebai and are **not** relicensed by this repository.
 
 ## About the book
 

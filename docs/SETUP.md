@@ -31,13 +31,13 @@ The core exercises use standard Linux command-line tools. For repository access,
 
 ```bash
 sudo apt update
-sudo apt install -y git curl
+sudo apt install -y git curl python3
 ```
 
 **Fedora/RHEL family:**
 
 ```bash
-sudo dnf install -y git curl
+sudo dnf install -y git curl python3
 ```
 
 Verify:
@@ -45,6 +45,7 @@ Verify:
 ```bash
 git --version
 curl --version
+python3 --version
 ```
 
 Do not install NGINX yet if you're following the book in order. Chapter 7 first checks for the software and then installs it only when needed.

@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.."
 bash -n scripts/verify-nginx.sh
 bash -n tests/test-verify-nginx.sh
 bash -n tests/validate-files.sh
-bash -n publish-to-github.sh
+bash -n tests/validate-ubuntu-live.sh
 bash tests/test-verify-nginx.sh
 
 python3 - <<'PYTEST'

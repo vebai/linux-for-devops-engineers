@@ -120,9 +120,10 @@ Now install Git and curl:
 
 ```bash
 sudo apt update
-sudo apt install -y git curl
+sudo apt install -y git curl python3
 git --version
 curl --version
+python3 --version
 ```
 
 Do **not** install NGINX yet if following the book in order; Chapter 7 introduces it.
