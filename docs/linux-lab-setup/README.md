@@ -1,6 +1,6 @@
 # Create a Linux Lab on Your Computer
 
-You can complete the **Linux for DevOps Engineers** exercises even if you do not have access to a Linux server. Set up a disposable Ubuntu environment on your own computer using **VirtualBox**, **VMware Workstation/Fusion**, or **Windows Subsystem for Linux (WSL 2)**.
+Set up a disposable Ubuntu environment on your own computer using **VirtualBox**, **VMware Workstation/Fusion**, or **Windows Subsystem for Linux (WSL 2)**.
 
 For the most isolated learning environment, choose a VM in VirtualBox or VMware. WSL 2 is a convenient Windows alternative, but it is integrated with your Windows system: keep experiments inside your Linux home directory and do not assume WSL protects Windows files from changes.
 
