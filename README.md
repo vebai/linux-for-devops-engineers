@@ -8,13 +8,22 @@ This is the companion repository for *Linux for DevOps Engineers: Operate, Autom
 
 **[Amazon UK — Paperback](https://www.amazon.co.uk/dp/B0HNP5QTYW)** · [Amazon US — Paperback](https://www.amazon.com/dp/B0HNP5QTYW)
 
-**Quick navigation:** [Prerequisites](#prerequisites) · [Getting started](#getting-started) · [Chapter guide](#chapter-guide) · [Validation](#verify-the-repository-files) · [Cleanup](docs/CLEANUP.md)
+**Quick navigation:** [Before you begin](#before-you-begin) · [Getting started](#getting-started) · [Chapter guide](#chapter-guide) · [Validation](#verify-the-repository-files) · [Cleanup](docs/CLEANUP.md)
 
 ![Six stages of the Linux learning journey: orient in your environment, inspect files and evidence, act safely, verify results, automate repeatable tasks, and diagnose failures.](docs/images/linux-learning-journey.png)
 
 *The labs progress from identifying the system you are working on to verifying recovery after a service failure.*
 
-## Prerequisites
+## What you will build and practise
+
+- Build a continuous Linux lab in `~/devops-lab/` and organise its configuration, logs and scripts.
+- Work with files, archives, ownership and permissions, and capture command output and errors for diagnosis.
+- Install or inspect NGINX, read systemd journal entries, and trace a local HTTP request from the listening port to the response.
+- Run a repeatable Bash verification check, diagnose a controlled NGINX failure, and verify recovery.
+
+## Before you begin
+
+<a id="prerequisites"></a>
 
 - A disposable Linux VM you are authorised to administer. Use a recent Ubuntu/Debian or RHEL-family distribution with systemd, networking and working package repositories. Use Ubuntu for the live validation script.
 - A non-root lab user with authorised `sudo` access for package installation and service management.
@@ -30,13 +39,17 @@ See [Create a Linux lab](docs/linux-lab-setup/README.md) for VirtualBox, VMware 
 
 ## Getting started
 
-1. **Clone the examples inside the Linux lab and check your tools.**
+1. **Open a terminal in your disposable Linux lab.** Check the host and user, then clone the examples and verify your tools.
 
    ```bash
+   hostname
+   whoami
+   cat /etc/os-release
    git clone https://github.com/vebai/linux-for-devops-engineers.git
    cd linux-for-devops-engineers
    bash --version
    python3 --version
+   curl --version
    ```
 
    If Git is unavailable, download and extract the repository archive into your Linux home directory.
@@ -127,6 +140,12 @@ Inspect before destructive action; verify afterwards. Don't treat a running serv
 ## Report a lab issue or erratum
 
 Use the [reader issue template](https://github.com/vebai/linux-for-devops-engineers/issues/new?template=reader-report.md) for typos, broken examples or distribution-specific differences.
+
+## Continue with Git
+
+*Git Team Workflows* builds on your command-line practice with team workflows for branching, reviewing changes, collaborating and recovering safely.
+
+**[Amazon UK — Paperback](https://www.amazon.co.uk/dp/B0HNP7SJG2)** · [Companion exercises](https://github.com/vebai/git-team-workflows)
 
 ## Licence
 
