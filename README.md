@@ -1,53 +1,45 @@
 # Linux for DevOps Engineers
 
-**Official companion repository for _Linux for DevOps Engineers: Operate, Automate and Troubleshoot Linux Systems with Evidence_ by Victor Ebai.**
+[![Validate companion repository files](https://github.com/vebai/linux-for-devops-engineers/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/vebai/linux-for-devops-engineers/actions/workflows/validate.yml)
 
-## Build the Linux skills that DevOps work actually requires
+This is the companion repository for *Linux for DevOps Engineers: Operate, Automate and Troubleshoot Linux Systems with Evidence* by **Victor Ebai**. It provides chapter-by-chapter lab guides, sample configuration and log files, and a Bash script for verifying NGINX. The book is self-contained, and the repository gives you files you can run and inspect as you practise.
 
-When an application stops responding, a deployment script fails, or a service behaves differently on another server, knowing a few Linux commands is not enough. You need to establish **which system and identity you are using**, understand the state of the filesystem and services, find relevant evidence, make a controlled change and verify that the original requirement now works.
+**Quick navigation:** [Prerequisites](#prerequisites) · [Getting started](#getting-started) · [Chapter guide](#chapter-guide) · [Validation](#verify-the-repository-files) · [Cleanup](docs/CLEANUP.md)
 
-_Linux for DevOps Engineers_ develops that capability through practical, cumulative exercises. Instead of memorising hundreds of commands, you learn **how to choose the right evidence**, interpret it and use it to make safer operational decisions. You'll progress from terminal orientation and file permissions to service administration, logs, network checks, Bash automation and recovery from real failures.
+![Six stages of the Linux learning journey: orient in your environment, inspect files and evidence, act safely, verify results, automate repeatable tasks, and diagnose failures.](docs/images/linux-learning-journey.png)
 
-**By the end, you'll be able to:**
+*The labs progress from identifying the system you are working on to verifying recovery after a service failure.*
 
-- Navigate and operate Linux filesystems with confidence, including ownership and permissions.
-- Investigate running processes, NGINX services, memory, storage, logs and network endpoints.
-- Combine commands and capture diagnostic output without losing important error evidence.
-- Turn a manually verified operational procedure into a repeatable Bash check.
-- Diagnose controlled failures by locating the first abnormal boundary and verifying recovery.
+## Prerequisites
 
-The book builds two complementary habits:
+- A disposable Linux VM you are authorised to administer. Use a recent Ubuntu/Debian or RHEL-family distribution with systemd, networking and working package repositories. Use Ubuntu for the live validation script.
+- A non-root lab user with authorised `sudo` access for package installation and service management.
+- Bash and Python 3 for the repository checks, Git to clone the examples, and curl for the HTTP exercises. The [setup guide](docs/SETUP.md) includes package installation and environment checks.
 
-**Learning journey:** ORIENT → INSPECT → ACT → VERIFY → AUTOMATE → DIAGNOSE
+> [!WARNING]
+> Run the service and permission drills only in an authorised disposable lab. Some exercises deliberately change file permissions or stop NGINX. Keep them off production systems and shared servers.
 
-**Operating habit:** ORIENT → ACT → OBSERVE → VERIFY → RECOVER
+See [Create a Linux lab](docs/linux-lab-setup/README.md) for VirtualBox, VMware and WSL 2 instructions. On Windows, confirm that systemd is enabled and working before using WSL 2 for service exercises.
 
-### About this companion repository
+> [!NOTE]
+> [GitHub Codespaces](https://docs.github.com/en/codespaces/about-codespaces/what-are-codespaces) opens a development container on a GitHub-managed VM. You can use it to browse the examples or run the static and mocked checks with Bash and Python 3 available. Service, journal and networking labs depend on the init system and network available inside the container. Use the disposable Linux VM for those labs and for live Ubuntu validation.
 
-The book contains the explanations, mental models and practical exercises. This repository makes practice easier with a **ready-to-use NGINX verification script**, small sample data files, a chapter-by-chapter lab path, setup guidance, troubleshooting references and safe cleanup instructions. The book is self-contained; using the repository is optional.
+## Getting started
 
-**Looking for the complete learning path?** Read _Linux for DevOps Engineers: Operate, Automate and Troubleshoot Linux Systems with Evidence_ by Victor Ebai. The book explains the decisions behind each command and how to transfer the method to real DevOps work.
-
-## Start here
-
-**Use a disposable Linux VM or sandbox**, not your MacBook's macOS shell for the Linux service-management labs. A recent Ubuntu/Debian or RHEL-family distribution with `systemd`, `sudo` access and functioning package repositories is recommended.
-
-1. **No Linux environment yet?** Follow the [step-by-step VirtualBox, VMware or WSL 2 installation guide](docs/linux-lab-setup/README.md) to prepare a safe practice environment and verify your sudo user.
-2. Read [setup and prerequisites](docs/SETUP.md) and check which Linux host you're controlling.
-3. Obtain the files **inside your Linux VM**:
+1. **Clone the examples inside the Linux lab and check your tools.**
 
    ```bash
    git clone https://github.com/vebai/linux-for-devops-engineers.git
    cd linux-for-devops-engineers
+   bash --version
+   python3 --version
    ```
 
-   If Git is not installed, obtain the repository as an archive and extract it into your Linux home directory.
-4. Begin [Chapter 1](chapters/chapter-01-operating-context/README.md), establishing your user, host, distribution and `~/devops-lab/` workspace.
-5. Complete the chapters in order, preserving `~/devops-lab/` as the continuous practical workspace.
-6. Use the ready-to-use files only when the chapter calls for them. For example, Chapter 10 provides `scripts/verify-nginx.sh` to copy into `~/devops-lab/scripts/`.
-7. Use [troubleshooting](docs/TROUBLESHOOTING.md) when something differs from the expected state, then follow [cleanup](docs/CLEANUP.md) when finished.
+   If Git is unavailable, download and extract the repository archive into your Linux home directory.
 
-**Two directories have different purposes:** this cloned repository stores the example files; **`~/devops-lab/` is the workspace you modify** while completing the exercises. Run chapter commands from the Linux VM unless a guide explicitly says otherwise.
+2. **Begin with [Chapter 1](chapters/chapter-01-operating-context/README.md).** Confirm your host, distribution and user, then create `~/devops-lab/` as instructed.
+3. **Follow the chapters in order.** Keep the clone as a reference and make lab changes in `~/devops-lab/`. Copy files into it only when a chapter asks you to. For example, Chapter 10 uses `scripts/verify-nginx.sh`.
+4. **Verify your work and clean up.** Use the chapter checks for live evidence, the [troubleshooting guide](docs/TROUBLESHOOTING.md) if results differ, and the [cleanup guide](docs/CLEANUP.md) when finished.
 
 ## Chapter guide
 
@@ -65,13 +57,13 @@ The book contains the explanations, mental models and practical exercises. This 
 | [10 — Bash automation](chapters/chapter-10-bash-automation/README.md) | Run and understand the verified four-check Bash script |
 | [11 — Troubleshooting](chapters/chapter-11-evidence-first-troubleshooting/README.md) | Break NGINX deliberately, diagnose, recover and prove success |
 
-## Practical files
+## How the repository is organised
 
 ```text
 linux-for-devops-engineers/
 ├── README.md
 ├── chapters/                 # 11 reader-focused lab guides
-├── docs/                     # setup, troubleshooting, cleanup, command reference
+├── docs/                     # setup, troubleshooting, cleanup, command reference and diagram
 ├── examples/
 │   ├── app.conf              # environment=lab
 │   └── app.log               # sample text evidence for Chapter 5
@@ -85,15 +77,13 @@ The sample `app.log` is **fabricated lab data**, not NGINX or production inciden
 
 ## Verify the repository files
 
-The validation command requires **Bash and Python 3**. Install Python 3 as shown in [setup and prerequisites](docs/SETUP.md).
-
 From the cloned repository directory, run:
 
 ```bash
 bash tests/validate-files.sh
 ```
 
-These checks verify Bash syntax, internal Markdown links and the verification script's behaviour against **mock** commands. They do not install packages, start or stop services, or assert that your Linux VM is correctly configured. For real system verification, use the commands in the appropriate chapter.
+[GitHub Actions](https://github.com/vebai/linux-for-devops-engineers/actions/workflows/validate.yml) runs this command on pushes and pull requests. It checks Bash syntax, relative Markdown links and the NGINX verification script against mocked commands. The workflow leaves package installation, real services and live network checks to the VM exercises below.
 
 ## Real Ubuntu VM lab validation
 
@@ -130,19 +120,10 @@ Inspect before destructive action; verify afterwards. Don't treat a running serv
 - [Evidence method](docs/EVIDENCE-METHOD.md)
 - [Clean up safely](docs/CLEANUP.md)
 
-This repository is designed for **authorised disposable learning environments**. Read commands before execution. Some exercises deliberately change permissions or stop NGINX; do not run those drills on production systems or shared servers.
+## Report a lab issue or erratum
+
+Use the [reader issue template](https://github.com/vebai/linux-for-devops-engineers/issues/new?template=reader-report.md) for typos, broken examples or distribution-specific differences.
 
 ## Licence
 
-Original companion repository code and example files are supplied under the
-[MIT License](LICENSE), which permits reuse, modification and redistribution subject
-to its attribution requirement. The separately published **book and its manuscript**
-remain copyright © 2026 Victor Ebai and are **not** relicensed by this repository.
-
-## About the book
-
-**_Linux for DevOps Engineers_ — Operate, Automate and Troubleshoot Linux Systems with Evidence**
-
-**Author:** Victor Ebai
-
-For a structured explanation of _why_ each Linux operation matters, the engineering decisions it supports, and the complete progression from first inspection to incident diagnosis, follow the book alongside these reusable lab files.
+The original companion code and example files are available under the [MIT License](LICENSE). The book and learning journey illustration are © 2026 Victor Ebai and are excluded from the code licence.
