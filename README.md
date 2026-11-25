@@ -4,6 +4,10 @@
 
 This is the companion repository for *Linux for DevOps Engineers: Operate, Automate and Troubleshoot Linux Systems with Evidence* by **Victor Ebai**. It provides chapter-by-chapter lab guides, sample configuration and log files, and a Bash script for verifying NGINX. The book is self-contained, and the repository gives you files you can run and inspect as you practise.
 
+## Get the paperback
+
+**[Amazon UK — Paperback](https://www.amazon.co.uk/dp/B0HNP5QTYW)** · [Amazon US — Paperback](https://www.amazon.com/dp/B0HNP5QTYW)
+
 **Quick navigation:** [Prerequisites](#prerequisites) · [Getting started](#getting-started) · [Chapter guide](#chapter-guide) · [Validation](#verify-the-repository-files) · [Cleanup](docs/CLEANUP.md)
 
 ![Six stages of the Linux learning journey: orient in your environment, inspect files and evidence, act safely, verify results, automate repeatable tasks, and diagnose failures.](docs/images/linux-learning-journey.png)
